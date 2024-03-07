@@ -1,0 +1,4 @@
+add input fields to enter the following:
+    number of random names
+    min length of name
+    max length of name

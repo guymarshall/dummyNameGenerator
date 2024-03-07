@@ -36,13 +36,10 @@ int main(int argc, char *argv[])
             error = argc;
             break;
         case 4:
-            // TODO: correct number of arguments provided
             printf("Number of random names: %s\n", argv[1]);
             printf("Min length of name: %s\n", argv[2]);
             printf("Max length of name: %s\n", argv[3]);
-
-            // TODO: read first_names.txt into firstNames
-            // TODO: read last_names.txt into lastNames
+            break;
         default:
             printf("Too many arguments provided.\n");
             print_usage();
@@ -55,6 +52,9 @@ int main(int argc, char *argv[])
         printf("An error has occurred.\n");
         return error;
     }
+
+    // TODO: read first_names.txt into firstNames
+    // TODO: read last_names.txt into lastNames
 
     return 0;
 }

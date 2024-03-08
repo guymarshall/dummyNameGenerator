@@ -1,10 +1,14 @@
-<?php
+<?php require_once 'getNames.php'; ?>
 
-const FIRST_NAMES_PATH = '';
-const LAST_NAMES_PATH = '';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Name Generator</title>
+</head>
+<body>
+<?php require_once 'body.php'; ?>
 
-function main(): void
-{
-    $firstNames = file(FIRST_NAMES_PATH);
-    $lastNames = file(LAST_NAMES_PATH);
-}
+</body>
+</html>

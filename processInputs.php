@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
+
 function getRandomNames(int $numberOfNames, int $minimumLength, int $maximumLength): array
 {
     $firstNamesAll = file('files/first_names.txt');
@@ -26,7 +28,19 @@ function getCorrectLengthNames(array $names, int $minimumLength, int $maximumLen
 
 function getRandomElement(array $array): string
 {
-    return $array[array_rand($array)];
+    return trim($array[array_rand($array)]);
+}
+
+#[NoReturn] function downloadNamesToFile(array $names): void
+{
+    header('Content-Type: text/plain');
+    header('Content-Disposition: attachment; filename="random_names.txt"');
+
+    foreach ($names as $name) {
+        echo $name . PHP_EOL;
+    }
+
+    exit;
 }
 
 $dangerous_numberOfNames = $_GET['number-of-names'];
@@ -51,5 +65,4 @@ $maximumLength = $dangerous_maximumLength;
 
 $randomNames = getRandomNames($numberOfNames, $minimumLength, $maximumLength);
 
-// save random name array to random_names.txt
-// let user save random_names.txt file
+downloadNamesToFile($randomNames);

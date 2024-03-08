@@ -1,5 +1,34 @@
 <?php
 
+function getRandomNames(int $numberOfNames, int $minimumLength, int $maximumLength): array
+{
+    $firstNamesAll = file('files/first_names.txt');
+    $lastNamesAll = file('files/last_names.txt');
+
+    $firstNames = getCorrectLengthNames($firstNamesAll, $minimumLength, $maximumLength);
+    $lastNames = getCorrectLengthNames($lastNamesAll, $minimumLength, $maximumLength);
+
+    return array_map(static function () use ($firstNames, $lastNames) {
+        $firstName = getRandomElement($firstNames);
+        $lastName = getRandomElement($lastNames);
+
+        return $firstName . ' ' . $lastName;
+    }, range(1, $numberOfNames));
+}
+
+function getCorrectLengthNames(array $names, int $minimumLength, int $maximumLength): array
+{
+    return array_filter($names, static function ($name) use ($minimumLength, $maximumLength) {
+        $length = strlen($name);
+        return $length >= $minimumLength && $length <= $maximumLength;
+    });
+}
+
+function getRandomElement(array $array): string
+{
+    return $array[array_rand($array)];
+}
+
 $dangerous_numberOfNames = $_GET['number-of-names'];
 $dangerous_minimumLength = $_GET['minimum-length'];
 $dangerous_maximumLength = $_GET['maximum-length'];
@@ -20,6 +49,7 @@ $numberOfNames = $dangerous_numberOfNames;
 $minimumLength = $dangerous_minimumLength;
 $maximumLength = $dangerous_maximumLength;
 
-// generate random name array
+$randomNames = getRandomNames($numberOfNames, $minimumLength, $maximumLength);
+
 // save random name array to random_names.txt
 // let user save random_names.txt file

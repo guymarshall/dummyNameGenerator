@@ -1,5 +1,3 @@
-<?php require_once 'getNames.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,6 @@
     <title>Dummy Name Generator</title>
 </head>
 <body>
-<?php require_once 'body.php'; ?>
-
+    <?php require_once 'body.php'; ?>
 </body>
 </html>

@@ -19,3 +19,7 @@ if (!is_numeric($dangerous_maximumLength) || floor($dangerous_maximumLength) ===
 $numberOfNames = $dangerous_numberOfNames;
 $minimumLength = $dangerous_minimumLength;
 $maximumLength = $dangerous_maximumLength;
+
+// generate random name array
+// save random name array to random_names.txt
+// let user save random_names.txt file
